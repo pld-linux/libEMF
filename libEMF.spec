@@ -2,12 +2,13 @@ Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
 Version:	1.0
-Release:	1
+Release:	2
 License:	LGPL/GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libemf/%{name}-%{version}.tar.gz
 # Source0-md5:	5424c4ffb93cea58cd4d54d308b42fed
 Patch0:		%{name}-gcc3.patch
+Patch1:		%{name}-amd64.patch
 URL:		http://libemf.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -56,7 +57,8 @@ Statyczna biblioteka libEMF.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 # supplied libtool is broken (no C++ libraries support)
