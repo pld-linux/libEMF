@@ -11,7 +11,7 @@ Patch0:		%{name}-gcc3.patch
 URL:		http://libemf.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libstdc++-devel
+BuildRequires:	libstdc++-devel >= 5:3.0
 BuildRequires:	libtool >= 2:1.4d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
