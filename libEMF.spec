@@ -5,7 +5,7 @@ Version:	1.0
 Release:	1
 License:	LGPL/GPL
 Group:		Libraries
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/libemf/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/libemf/%{name}-%{version}.tar.gz
 Patch0:		%{name}-gcc3.patch
 URL:		http://libemf.sourceforge.net/
 BuildRequires:	autoconf
