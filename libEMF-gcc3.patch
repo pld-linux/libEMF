@@ -1,0 +1,59 @@
+--- libEMF-1.0/libemf/libemf.cpp.orig	Tue Jan 29 04:37:54 2002
++++ libEMF-1.0/libemf/libemf.cpp	Fri Dec 20 01:33:34 2002
+@@ -18,6 +18,9 @@
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  *
+  */
++#include <iostream>
++#include <ext/functional>
++
+ #include "libemf.h"
+ 
+ namespace EMF {
+@@ -48,7 +51,7 @@
+       be32 = !be16;
+ 
+     if ( be32 != be16 ) {
+-      cerr << "endian-ness not consistent between short's and int's!" << endl;
++      std::cerr << "endian-ness not consistent between short's and int's!" << std::endl;
+       ::abort();
+     }
+ 
+@@ -849,7 +852,7 @@
+     if ( dc->fp ) {
+ 
+       std::for_each( dc->records.begin(), dc->records.end(),
+-		     std::bind2nd( std::mem_fun1( &EMF::METARECORD::serialize ),
++		     std::bind2nd( __gnu_cxx::mem_fun1( &EMF::METARECORD::serialize ),
+ 				   dc->ds ) );
+       fclose( dc->fp );
+ 
+@@ -896,7 +899,7 @@
+     if ( dc->fp ) {
+ 
+       std::for_each( dc->records.begin(), dc->records.end(),
+-		     std::bind2nd( std::mem_fun1( &EMF::METARECORD::serialize ),
++		     std::bind2nd( __gnu_cxx::mem_fun1( &EMF::METARECORD::serialize ),
+ 				   dc->ds ) );
+     }
+ 
+@@ -1032,7 +1035,7 @@
+       if ( feof( fp ) ) break;
+ 
+       if ( emr.nSize == 0 ) {
+-	cerr << "GetEnhMetaFileW error: record size == 0. cannot continue" << endl;
++	std::cerr << "GetEnhMetaFileW error: record size == 0. cannot continue" << std::endl;
+ 	fclose( fp );
+ 	return 0;
+       }
+@@ -1050,8 +1053,8 @@
+ 	dc->appendRecord( record );
+       }
+       else
+-	cerr << "GetEnhMetaFileW warning: read unknown record type " << emr.iType
+-	     << " of size " << emr.nSize << endl;
++	std::cerr << "GetEnhMetaFileW warning: read unknown record type " << emr.iType
++	     << " of size " << emr.nSize << std::endl;
+ 
+       // Regardless, position ourselves at the next record.
+       fseek( fp, next_position, SEEK_SET );
