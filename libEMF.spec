@@ -33,6 +33,7 @@ Summary:	libEMF header files
 Summary(pl):	Pliki nag³ówkowe libEMF
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	libstdc++-devel
 
 %description devel
 libEMF header files.
