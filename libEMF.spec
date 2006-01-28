@@ -1,16 +1,16 @@
 Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
-Version:	1.0
-Release:	2
+Version:	1.0.3
+Release:	1
 License:	LGPL/GPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/libemf/%{name}-%{version}.tar.gz
-# Source0-md5:	5424c4ffb93cea58cd4d54d308b42fed
-Patch0:		%{name}-gcc3.patch
-Patch1:		%{name}-amd64.patch
+#Source0:	http://dl.sourceforge.net/libemf/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
+# Source0-md5:	a4e91fd8077ce5f540f569e20e8ef7ff
+Patch0:		%{name}-amd64.patch
 URL:		http://libemf.sourceforge.net/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel >= 5:3.0
 BuildRequires:	libtool >= 2:1.4d
@@ -34,7 +34,7 @@ zaimplementowany bardzo ograniczony podzbiór GDI.
 Summary:	libEMF header files
 Summary(pl):	Pliki nag³ówkowe libEMF
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
 
 %description devel
@@ -47,7 +47,7 @@ Pliki nag³ówkowe libEMF.
 Summary:	libEMF static library
 Summary(pl):	Statyczna biblioteka libEMF
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 libEMF static library.
@@ -58,7 +58,6 @@ Statyczna biblioteka libEMF.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 # supplied libtool is broken (no C++ libraries support)
@@ -74,7 +73,8 @@ Statyczna biblioteka libEMF.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
