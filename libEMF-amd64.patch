@@ -1,66 +1,74 @@
-diff -dur libEMF-1.0.orig/include/wine/winnt.h libEMF-1.0/include/wine/winnt.h
---- libEMF-1.0.orig/include/wine/winnt.h	2002-01-29 05:31:53.000000000 +0100
-+++ libEMF-1.0/include/wine/winnt.h	2004-01-22 14:22:35.382239593 +0100
-@@ -45,6 +45,10 @@
- # undef WORDS_BIGENDIAN
- # undef BITFIELDS_BIGENDIAN
- # undef ALLOW_UNALIGNED_ACCESS
-+#elif defined(__x86_64__)
+--- libEMF-1.0.3/include/libEMF/wine/winnt.h.orig	2005-08-07 17:50:12.000000000 +0200
++++ libEMF-1.0.3/include/libEMF/wine/winnt.h	2006-01-28 14:05:06.149950750 +0100
+@@ -29,10 +29,14 @@
+ 
+ /* Architecture dependent settings. */
+ /* These are hardcoded to avoid dependencies on config.h in Winelib apps. */
+-#if defined(__i386__)
++#if defined(__i386__) || defined(__x86_64__)
+ # undef  WORDS_BIGENDIAN
+ # undef  BITFIELDS_BIGENDIAN
+ # define ALLOW_UNALIGNED_ACCESS
++#elif defined(__alpha__)
 +# undef  WORDS_BIGENDIAN
 +# undef  BITFIELDS_BIGENDIAN
-+# define ALLOW_UNALIGNED_ACCESS
- #elif !defined(RC_INVOKED)
- # error Unknown CPU architecture!
- #endif
-@@ -211,7 +215,7 @@
++# undef  ALLOW_UNALIGNED_ACCESS
+ #elif defined(__sparc__)
+ # define WORDS_BIGENDIAN
+ # define BITFIELDS_BIGENDIAN
+@@ -222,8 +226,13 @@
  typedef unsigned short  WORD,       *PWORD,    *LPWORD;
  typedef int             INT,        *PINT,     *LPINT;
  typedef unsigned int    UINT,       *PUINT,    *LPUINT;
--#if !defined(__alpha__)
-+#if !defined(__alpha__) && !defined(__x86_64__)
++#if defined(_LP64) || defined(__alpha__)
++typedef unsigned int    DWORD,      *PDWORD,   *LPDWORD;
++typedef unsigned int    ULONG,      *PULONG,   *LPULONG;
++#else
  typedef unsigned long   DWORD,      *PDWORD,   *LPDWORD;
  typedef unsigned long   ULONG,      *PULONG,   *LPULONG;
- #else /* defined( __alpha__ ) */
-@@ -257,7 +261,7 @@
++#endif
+ typedef float           FLOAT,      *PFLOAT,   *LPFLOAT;
+ typedef double          DOUBLE,     *PDOUBLE,  *LPDOUBLE;
+ typedef double          DATE;
+@@ -263,7 +272,11 @@
  typedef BYTE            BOOLEAN,    *PBOOLEAN;
  typedef char            CHAR,       *PCHAR;
  typedef short           SHORT,      *PSHORT;
--#if !defined(__alpha__)
-+#if !defined(__alpha__) && !defined(__x86_64__)
++#if defined(_LP64) || defined(__alpha__)
++typedef int             LONG,       *PLONG,    *LPLONG;
++#else
  typedef long            LONG,       *PLONG,    *LPLONG;
- #else /* defined( __alpha__ ) */
- typedef int             LONG,       *PLONG,    *LPLONG;
-@@ -1045,6 +1049,11 @@
++#endif
  
- #endif  /* __sparc__ */
+ /* Some systems might have wchar_t, but we really need 16 bit characters */
+ #ifndef WINE_WCHAR_DEFINED
+@@ -652,6 +665,11 @@
  
-+#if defined(__x86_64__)
-+#define CONTEXT_FULL 1
+ #endif  /* __i386__ */
+ 
++#ifdef __x86_64__
++#define CONTEXT_FULL		1
 +typedef struct _CONTEXT CONTEXT;
 +#endif
 +
- #if !defined(CONTEXT_FULL) && !defined(RC_INVOKED)
- #error You need to define a CONTEXT for your CPU
- #endif
-diff -dur libEMF-1.0.orig/libemf/libemf.h libEMF-1.0/libemf/libemf.h
---- libEMF-1.0.orig/libemf/libemf.h	2002-01-29 05:54:27.000000000 +0100
-+++ libEMF-1.0/libemf/libemf.h	2004-01-22 14:23:14.315813724 +0100
-@@ -332,7 +332,7 @@
- 	fread( &dword, sizeof(DWORD), 1, fp_ );
+ /* Alpha context definitions */
+ #ifdef _ALPHA_
+ 
+--- libEMF-1.0.3/libemf/libemf.h.orig	2004-11-11 23:33:43.000000000 +0100
++++ libEMF-1.0.3/libemf/libemf.h	2006-01-28 14:06:54.300709750 +0100
+@@ -306,6 +306,7 @@
+ 	fread( &word, sizeof(INT16), 1, fp_ );
        return *this;
      }
--#if !defined(__alpha__)
-+#if !defined(__alpha__) && !defined(__x86_64__)
++#if !(defined(_LP64) || defined(__alpha__))
      /*!
-      * Output a long int to the stream (swabbed).
-      * \param long long int to output.
-@@ -402,7 +402,7 @@
- 	fread( &int_, sizeof(INT), 1, fp_ );
+      * Output a double word (long) to the stream (swabbed).
+      * \param word word (long) to output.
+@@ -374,6 +375,7 @@
+ 	fread( &long_, sizeof(LONG), 1, fp_ );
        return *this;
      }
--#if !defined(__alpha__)
-+#if !defined(__alpha__) && !defined(__x86_64__)
++#endif
      /*!
-      * Output a (long) unsigned int to the stream (swabbed).
-      * \param uint (long) unsigned int to output.
-Only in libEMF-1.0/libemf: libemf.h~
+      * Output a (long) int to the stream (swabbed).
+      * \param int_ (long) int to output.
