@@ -1,5 +1,5 @@
 Summary:	A library for generating Enhanced Metafiles
-Summary(pl):	Biblioteka do generowania plikÛw w formacie Enhanced Metafile
+Summary(pl.UTF-8):   Biblioteka do generowania plik√≥w w formacie Enhanced Metafile
 Name:		libEMF
 Version:	1.0.3
 Release:	1
@@ -23,16 +23,16 @@ don't natively support the ECMA-234 Graphics Device Interface
 graphics programs such as Grace or gnuplot. Therefore, it implements a
 very limited subset of the GDI.
 
-%description -l pl
-libEMF to biblioteka do generowania plikÛw w formacie Enhanced
-Metafile na systemach nie obs≥uguj±cych natywnie systemu graficznego
-ECMA-234 GDI. Biblioteka ma s≥uøyÊ jako sterownik dla innych programÛw
+%description -l pl.UTF-8
+libEMF to biblioteka do generowania plik√≥w w formacie Enhanced
+Metafile na systemach nie obs≈ÇugujƒÖcych natywnie systemu graficznego
+ECMA-234 GDI. Biblioteka ma s≈Çu≈ºyƒá jako sterownik dla innych program√≥w
 graficznych, takich jak Grace czy gnuplot. Z tego powodu ma
-zaimplementowany bardzo ograniczony podzbiÛr GDI.
+zaimplementowany bardzo ograniczony podzbi√≥r GDI.
 
 %package devel
 Summary:	libEMF header files
-Summary(pl):	Pliki nag≥Ûwkowe libEMF
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe libEMF
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
@@ -40,19 +40,19 @@ Requires:	libstdc++-devel
 %description devel
 libEMF header files.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe libEMF.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe libEMF.
 
 %package static
 Summary:	libEMF static library
-Summary(pl):	Statyczna biblioteka libEMF
+Summary(pl.UTF-8):   Statyczna biblioteka libEMF
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 libEMF static library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libEMF.
 
 %prep
