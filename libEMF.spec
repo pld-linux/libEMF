@@ -1,5 +1,5 @@
 Summary:	A library for generating Enhanced Metafiles
-Summary(pl.UTF-8):   Biblioteka do generowania plików w formacie Enhanced Metafile
+Summary(pl.UTF-8):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
 Version:	1.0.3
 Release:	1
@@ -32,7 +32,7 @@ zaimplementowany bardzo ograniczony podzbiór GDI.
 
 %package devel
 Summary:	libEMF header files
-Summary(pl.UTF-8):   Pliki nagłówkowe libEMF
+Summary(pl.UTF-8):	Pliki nagłówkowe libEMF
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
@@ -45,7 +45,7 @@ Pliki nagłówkowe libEMF.
 
 %package static
 Summary:	libEMF static library
-Summary(pl.UTF-8):   Statyczna biblioteka libEMF
+Summary(pl.UTF-8):	Statyczna biblioteka libEMF
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
