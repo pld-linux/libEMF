@@ -1,3 +1,6 @@
+# Conditional build:
+%bcond_without	static_libs	# don't build static library
+#
 Summary:	A library for generating Enhanced Metafiles
 Summary(pl.UTF-8):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
@@ -66,7 +69,8 @@ Statyczna biblioteka libEMF.
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-editing
+	--enable-editing \
+	%{!?with_static_libs:--disable-static}
 
 %{__make}
 
@@ -95,6 +99,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_includedir}/libEMF
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
