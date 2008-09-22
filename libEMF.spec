@@ -13,6 +13,7 @@ Group:		Libraries
 Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
 # Source0-md5:	a4e91fd8077ce5f540f569e20e8ef7ff
 Patch0:		%{name}-amd64.patch
+Patch1:		%{name}-limits.patch
 URL:		http://libemf.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -62,6 +63,7 @@ Statyczna biblioteka libEMF.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 # supplied libtool is broken (no C++ libraries support)
