@@ -92,18 +92,19 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_bindir}/printemf
+%attr(755,root,root) %{_libdir}/libEMF.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libEMF.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/html
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libEMF.so
+%{_libdir}/libEMF.la
 %{_includedir}/libEMF
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libEMF.a
 %endif
