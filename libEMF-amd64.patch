@@ -1,5 +1,25 @@
---- libEMF-1.0.3/include/libEMF/wine/winnt.h.orig	2005-08-07 17:50:12.000000000 +0200
-+++ libEMF-1.0.3/include/libEMF/wine/winnt.h	2006-01-28 14:05:06.149950750 +0100
+diff -urN libEMF-1.0.3/include/libEMF/wine/winbase.h libEMF-1.0.3.new/include/libEMF/wine/winbase.h
+--- libEMF-1.0.3/include/libEMF/wine/winbase.h	2004-07-29 08:20:38.000000000 +0200
++++ libEMF-1.0.3.new/include/libEMF/wine/winbase.h	2009-05-15 19:56:25.774725477 +0200
+@@ -1802,6 +1802,7 @@
+ VOID        WINAPI SetLastError(DWORD);
+ #endif  /* __i386__ && __GNUC__ */
+ 
++#if 0
+ /* FIXME: should handle platforms where sizeof(void*) != sizeof(long) */
+ static inline PVOID WINAPI InterlockedCompareExchangePointer( PVOID *dest, PVOID xchg, PVOID compare )
+ {
+@@ -1812,6 +1813,7 @@
+ {
+     return (PVOID)InterlockedExchange( (PLONG)dest, (LONG)val );
+ }
++#endif
+ 
+ #ifdef __WINE__
+ #define GetCurrentProcess() ((HANDLE)0xffffffff)
+diff -urN libEMF-1.0.3/include/libEMF/wine/winnt.h libEMF-1.0.3.new/include/libEMF/wine/winnt.h
+--- libEMF-1.0.3/include/libEMF/wine/winnt.h	2005-08-07 17:50:12.000000000 +0200
++++ libEMF-1.0.3.new/include/libEMF/wine/winnt.h	2009-05-15 18:50:24.735710711 +0200
 @@ -29,10 +29,14 @@
  
  /* Architecture dependent settings. */
@@ -54,8 +74,9 @@
  /* Alpha context definitions */
  #ifdef _ALPHA_
  
---- libEMF-1.0.3/libemf/libemf.h.orig	2004-11-11 23:33:43.000000000 +0100
-+++ libEMF-1.0.3/libemf/libemf.h	2006-01-28 14:06:54.300709750 +0100
+diff -urN libEMF-1.0.3/libemf/libemf.h libEMF-1.0.3.new/libemf/libemf.h
+--- libEMF-1.0.3/libemf/libemf.h	2004-11-11 23:33:43.000000000 +0100
++++ libEMF-1.0.3.new/libemf/libemf.h	2009-05-15 18:50:24.735710711 +0200
 @@ -306,6 +306,7 @@
  	fread( &word, sizeof(INT16), 1, fp_ );
        return *this;
