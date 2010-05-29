@@ -5,13 +5,13 @@
 Summary:	A library for generating Enhanced Metafiles
 Summary(pl.UTF-8):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
-Version:	1.0.3
-Release:	2
+Version:	1.0.4
+Release:	1
 License:	LGPL/GPL
 Group:		Libraries
 #Source0:	http://dl.sourceforge.net/libemf/%{name}-%{version}.tar.gz
 Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
-# Source0-md5:	a4e91fd8077ce5f540f569e20e8ef7ff
+# Source0-md5:	4e74e5ee5fdab37bae8be6cde4d1c57c
 Patch0:		%{name}-amd64.patch
 Patch1:		%{name}-limits.patch
 URL:		http://libemf.sourceforge.net/
