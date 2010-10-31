@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	Biblioteka do generowania plików w formacie Enhanced Metafil
 Name:		libEMF
 Version:	1.0.4
 Release:	1
-License:	LGPL/GPL
+License:	LGPL v2.1+ (library), GPL v2+ (utility)
 Group:		Libraries
 #Source0:	http://dl.sourceforge.net/libemf/%{name}-%{version}.tar.gz
 Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
@@ -38,6 +38,7 @@ zaimplementowany bardzo ograniczony podzbiór GDI.
 %package devel
 Summary:	libEMF header files
 Summary(pl.UTF-8):	Pliki nagłówkowe libEMF
+License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
@@ -51,6 +52,7 @@ Pliki nagłówkowe libEMF.
 %package static
 Summary:	libEMF static library
 Summary(pl.UTF-8):	Statyczna biblioteka libEMF
+License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -70,6 +72,7 @@ Statyczna biblioteka libEMF.
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--enable-editing \
