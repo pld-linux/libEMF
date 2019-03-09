@@ -1,11 +1,11 @@
---- libEMF-1.0.7/configure.ac.orig	2012-11-07 12:21:39.000000000 +0100
-+++ libEMF-1.0.7/configure.ac	2013-03-22 17:07:38.169058707 +0100
-@@ -5,7 +5,7 @@
- AC_INIT(libEMF, 1.0.7, dallenbarnett@users.sourceforge.net)
+--- libemf-1.0.11/configure.ac.orig	2019-03-09 08:28:02.956214044 +0100
++++ libemf-1.0.11/configure.ac	2019-03-09 08:28:34.766041716 +0100
+@@ -4,7 +4,7 @@
+ 
+ AC_INIT([libEMF], 1.0.11, dallenbarnett@users.sourceforge.net)
  AC_CONFIG_AUX_DIR(config)
- AM_INIT_AUTOMAKE(libEMF, 1.0.7)
 -AM_CONFIG_HEADER([config/config.h])
 +AC_CONFIG_HEADERS([config/config.h])
  AC_CONFIG_SRCDIR([include/libEMF/emf.h])
+ AM_INIT_AUTOMAKE
  
- # Checks for programs.
