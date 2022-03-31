@@ -1,8 +1,8 @@
---- libemf-1.0.11/configure.ac.orig	2019-03-09 08:28:02.956214044 +0100
-+++ libemf-1.0.11/configure.ac	2019-03-09 08:28:34.766041716 +0100
+--- libemf-1.0.13/configure.ac.orig	2022-03-31 21:50:55.790987420 +0200
++++ libemf-1.0.13/configure.ac	2022-03-31 21:51:31.547460377 +0200
 @@ -4,7 +4,7 @@
  
- AC_INIT([libEMF], 1.0.11, dallenbarnett@users.sourceforge.net)
+ AC_INIT([libEMF], 1.0.13, dallenbarnett@users.sourceforge.net)
  AC_CONFIG_AUX_DIR(config)
 -AM_CONFIG_HEADER([config/config.h])
 +AC_CONFIG_HEADERS([config/config.h])
